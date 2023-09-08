@@ -1,6 +1,6 @@
 {
     "name": "@libsql/client",
-    "version": "0.3.6-pre.2",
+    "version": "0.3.6-serverless",
     "keywords": [
         "libsql",
         "database",
@@ -52,11 +52,6 @@
             "import": "./lib-esm/ws.js",
             "require": "./lib-cjs/ws.js"
         },
-        "./sqlite3": {
-            "types": "./lib-esm/sqlite3.d.ts",
-            "import": "./lib-esm/sqlite3.js",
-            "require": "./lib-cjs/sqlite3.js"
-        },
         "./web": {
             "types": "./lib-esm/web.d.ts",
             "import": "./lib-esm/web.js",
@@ -65,21 +60,10 @@
     },
     "typesVersions": {
         "*": {
-            ".": [
-                "./lib-esm/node.d.ts"
-            ],
-            "http": [
-                "./lib-esm/http.d.ts"
-            ],
-            "hrana": [
-                "./lib-esm/hrana.d.ts"
-            ],
-            "sqlite3": [
-                "./lib-esm/sqlite3.d.ts"
-            ],
-            "web": [
-                "./lib-esm/web.d.ts"
-            ]
+            ".": ["./lib-esm/node.d.ts"],
+            "http": ["./lib-esm/http.d.ts"],
+            "hrana": ["./lib-esm/hrana.d.ts"],
+            "web": ["./lib-esm/web.d.ts"]
         }
     },
     "files": [
@@ -98,9 +82,7 @@
         "typedoc": "rm -rf ./docs && typedoc"
     },
     "dependencies": {
-        "@libsql/hrana-client": "^0.5.5",
-        "js-base64": "^3.7.5",
-        "libsql": "^0.1.28"
+        "@libsql/hrana-client": "^0.5.5"
     },
     "devDependencies": {
         "@types/jest": "^29.2.5",

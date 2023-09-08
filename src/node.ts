@@ -2,9 +2,9 @@ import type { Config, Client } from "./api.js";
 import { LibsqlError } from "./api.js";
 import type { ExpandedConfig } from "./config.js";
 import { expandConfig } from "./config.js";
-import { _createClient as _createSqlite3Client } from "./sqlite3.js";
 import { _createClient as _createWsClient } from "./ws.js";
 import { _createClient as _createHttpClient } from "./http.js";
+import {supportedUrlLink} from "./util";
 
 export * from "./api.js";
 
@@ -22,6 +22,9 @@ function _createClient(config: ExpandedConfig) {
     } else if (config.scheme === "https" || config.scheme === "http") {
         return _createHttpClient(config);
     } else {
-        return _createSqlite3Client(config);
+        throw new LibsqlError(
+            'This build does not support local libsql files',
+            "URL_SCHEME_NOT_SUPPORTED",
+        );
     }
 }
